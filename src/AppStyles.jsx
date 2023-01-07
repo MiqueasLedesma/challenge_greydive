@@ -6,7 +6,7 @@ export const AppContainer = styled.div`
     justify-content: space-between;
     flex-direction: column;
     gap: 2rem;
-    background-color: #495891;
+    background-color: #1b2542;
     background-image: url(${background_image});
     background-size: cover;
     background-position: center;
