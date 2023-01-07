@@ -1,0 +1,15 @@
+[debug] [2023-01-06T18:20:05.549Z] ----------------------------------------------------------------------
+[debug] [2023-01-06T18:20:05.551Z] Command:       /usr/bin/node /usr/bin/firebase login
+[debug] [2023-01-06T18:20:05.551Z] CLI Version:   11.20.0
+[debug] [2023-01-06T18:20:05.552Z] Platform:      linux
+[debug] [2023-01-06T18:20:05.552Z] Node Version:  v18.12.1
+[debug] [2023-01-06T18:20:05.552Z] Time:          Fri Jan 06 2023 15:20:05 GMT-0300 (hora estándar de Argentina)
+[debug] [2023-01-06T18:20:05.552Z] ----------------------------------------------------------------------
+[debug] 
+[info] Already logged in as miqueasledesmadev@gmail.com
+[debug] [2023-01-06T18:20:15.611Z] Error: Timed out.
+    at Timeout._onTimeout (/usr/lib/node_modules/firebase-tools/lib/utils.js:253:49)
+    at listOnTimeout (node:internal/timers:564:17)
+    at process.processTimers (node:internal/timers:507:7)
+[error] 
+[error] Error: An unexpected error has occurred.
