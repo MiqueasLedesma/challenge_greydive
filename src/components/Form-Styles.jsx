@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const FormContainer = styled.div`
+    position: relative;
     height: 100vh;
     display: flex;
     flex-direction: row;
@@ -152,6 +153,31 @@ export const FormContainer = styled.div`
             input[type="checkbox"]:checked {
                 border-color: #666;
                 background-color: #666;
+            }
+        }
+        .submit {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            button[type="submit"] {
+                width: 35%;
+                background-color: #666;
+                border: none;
+                outline: none;
+                color: #fff;
+                font-size: 16px;
+                padding: 10px 20px;
+                cursor: pointer;
+                transition: 0.2s ease all;
+                &:hover {
+                    background-color: #555;
+                }
+                &:disabled {
+                    background-color: #ccc;
+                    color: #fff;
+                    cursor: not-allowed;
+                }
             }
         }
     }

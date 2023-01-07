@@ -3,9 +3,10 @@ import { firebaseApp } from '../assets/firebaseConfig';
 
 export async function saveMessage(obj) {
     try {
-        await addDoc(collection(getFirestore(firebaseApp), 'challenge_greydive'), obj);
+        const docRef = await addDoc(collection(getFirestore(firebaseApp), 'challenge_greydive'), obj)
+        return "Document written with ID: " + docRef.id;
     }
     catch (error) {
-        console.error('Error writing new message to Firebase Database', error);
+        return alert('Error writing new message to Firebase Database' +  error);
     }
 }

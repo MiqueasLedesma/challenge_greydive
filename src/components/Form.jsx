@@ -6,7 +6,8 @@ export function Form({ items }) {
     const [state, setState] = useState({});
     const handleSubmit = e => {
         e.preventDefault();
-        saveMessage(state);
+        saveMessage(state)
+        .then(r => alert(r))
     };
     const handleChange = e => {
         if (e.target.name === "terms_and_conditions") {
@@ -82,7 +83,13 @@ export function Form({ items }) {
                         );
                     }
                     if (item.type === 'submit') {
-                        return state.terms_and_conditions ? <button type="submit" key={item.name}>{item.label}</button> : <button type="submit" disabled key={item.name}>{item.label}</button> ;
+                        return <div className="submit">
+                            {
+                                state.terms_and_conditions ?
+                                    <button type="submit" key={item.name}>{item.label}</button> :
+                                    <button type="submit" disabled key={item.name}>{item.label}</button>
+                            }
+                        </div>;
                     }
                 })}
             </form>
