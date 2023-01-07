@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const FooterContainer = styled.div`
+    z-index: 10;
     background-color: #120a0f;
     color: #fff;
     width: 100%;

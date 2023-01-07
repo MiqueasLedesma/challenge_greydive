@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const NavbarContainer = styled.div`
+    z-index: 5;
     width: 100%;
     display: flex;
     flex-direction: row;

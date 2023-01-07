@@ -1,30 +1,29 @@
 import styled from "styled-components";
 
 export const FormContainer = styled.div`
-    position: relative;
-    height: 100vh;
+    z-index: 0;
+    height: fit-content;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    background-color: #353851;
-    padding-bottom: 5rem;
-    padding-top: 5rem;
     align-items: center;
     @media (max-width:768px) {
+        height: 100%;
         padding-bottom: 0;
         padding-top: 0;
     }
     form {
-        border-radius: 25px;
         @media (max-width:768px) {
             width: 100%;
             padding-inline-end: 2.5rem;
             padding-inline-start: 2.5rem;
             gap: 3rem;
+            height: fit-content;
         }
-        opacity: 0.8;
-        background-color: white;
-        width: 45%;
+        border-radius: 25px;
+        opacity: 0.7;
+        background-color: #fff;
+        width: 50%;
         height: fit-content;
         padding-top: 1rem;
         padding-bottom: 1rem;
@@ -161,8 +160,9 @@ export const FormContainer = styled.div`
             align-items: center;
             width: 100%;
             button[type="submit"] {
-                width: 35%;
+                width: 100px;
                 background-color: #666;
+                border-radius: 15px;
                 border: none;
                 outline: none;
                 color: #fff;
