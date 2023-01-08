@@ -4,7 +4,6 @@ import { db } from '../assets/firebaseConfig';
 export async function saveMessage(obj) {
     try {
         const docRef = await addDoc(db, obj)
-        console.log(docRef);
         return docRef.id;
     }
     catch (error) {

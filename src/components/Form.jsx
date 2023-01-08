@@ -21,6 +21,7 @@ export function Form({ items }) {
                 toast.success('Exito!')
                 navigate(`/success?id=${r}`)
             })
+            .catch(console.log('error'));
     };
     const handleChange = e => {
         if (e.target.name === "terms_and_conditions") {

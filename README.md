@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+# Greydive Challenge
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Herramientas Utilizadas:
+- **React**
+- Styled-Components
+- React Toastify
+- React Spring/web
+- Firebase
+- React dotenv
 
-## Available Scripts
+## Objetivos:
+- Consumir un archivo **.json** y generar a partir de él mismo una **App de encuesta**
+- Enviar las respuestas de la App a una base de datos en **Firebase** de mi propiedad
+- Traer las respuestas de la base de datos ya mencionada y mostrarlas en la misma App pero en otra ruta
+- Al presionar "Enviar" en el formulario debe aparecer un mensaje y el acceso a la ruta donde se encuentran las respuestas
 
-In the project directory, you can run:
+## Dudas que tuve con el proyecto:
+> Con respecto a lo que debería pasar al presionar el botón de "Enviar" no estaba seguro de si tenía que hacer una ventana emergente que muestre un mensaje con un botón de "Ver respuesta" o si tenía que mostrar un mensaje de carga y luego redireccionar hacia la ruta de respuestas. En la versión final opte por la segunda opción, pero debo agregar que también realice la primera opción.
+#### Opcion 1:
+```js
+ //Usando la libreria Sweet Alert 2 dentro del handleSubmit --> '/src/componentsForm.jsx'
 
-### `npm start`
+const handleSubmit = e => {
+    e.preventDefault();
+    saveMessage(state) /* funcion asincrona traida desde '/src/utils/SendForm.js' */
+        .then(r => {
+            Swal.fire(r)
+            .then(res => navigate(`/success?id=${r}`) )
+        })
+        .catch(r => Swal.fire(r))
+};
+```
+   > En este código la función saveMessage() recibe el objeto generado por el formulario y lo envía a la base de datos en firebase y retorna el id del documento creado, usando [Sweet Alert 2](https://sweetalert2.github.io/) muestro la respuesta y un botón de "ok". Al darle click navegaba hacia la ruta "/success" donde usando el hook useSearchParams() uso el id para traer la información del formulario
+#### Opcion 2:
+```js
+// Usando la libreria React Toastify y un useState adicional
+  const handleSubmit = e => {
+        setLoading(!loading);
+        setState({
+            ...state,
+            terms_and_conditions: false
+        });
+        e.preventDefault();
+        saveMessage(state)
+            .then(r => {
+                toast.success('Exito!')
+                navigate(`/success?id=${r}`)
+            })
+    };
+```
+> En este código adicione un setState() que cambie los términos y condiciones a false para que se deshabilite el botón submit, además un segundo setLoading() que cambiará el estado loading de false a true para que se renderice un mensaje de "Enviando Formulario...", en este caso el usuario no debe hacer ningún click adicional para que sea redirigido a la ruta '/success' y muestre un mensaje de éxito usando [React Toastify](https://fkhadra.github.io/react-toastify/introduction/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Proyecto finalizado: [Deploy](https://challenge-greydive-gamma.vercel.app/).
