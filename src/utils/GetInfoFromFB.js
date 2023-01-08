@@ -9,6 +9,6 @@ export const getInfoFromFB = async (query) => {
       const data = docSnap.data();
       return data;
     } else {
-      console.log("No such document!");
+      return "!document"
     }
 }

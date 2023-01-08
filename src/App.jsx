@@ -38,9 +38,7 @@ function App() {
           </animated.div>
         </>} />
         <Route path="/success" element={<>
-        <animated.div style={fadeIn}>
         <Success />
-        </animated.div>
         </>} />
       </Routes>
       <Footer />
