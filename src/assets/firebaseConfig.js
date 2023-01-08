@@ -1,4 +1,5 @@
 import { initializeApp } from 'firebase/app';
+import { collection, getFirestore } from 'firebase/firestore';
 import env from 'react-dotenv';
 
 const {
@@ -21,4 +22,5 @@ export const firebaseConfig = {
   measurementId: MEASUREMENT_ID
 };
 
-export const firebaseApp = initializeApp(firebaseConfig);
+const firebaseApp = initializeApp(firebaseConfig);
+export const db = collection(getFirestore(firebaseApp), 'challenge_greydive');
