@@ -180,5 +180,15 @@ export const FormContainer = styled.div`
                 }
             }
         }
+        .box {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            h5 {
+                color: #666;
+                font-weight: bold;
+            }
+        }
     }
 `;

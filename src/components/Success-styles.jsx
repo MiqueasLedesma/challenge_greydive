@@ -6,6 +6,10 @@ export const SuccessContainer = styled.div`
     justify-content: center;
     align-items: center;
     .box {
+        @media (max-width:768px) {
+            width: 100%;
+            height: 60%;
+        }
         padding: 2rem;
         display: flex;
         height: fit-content;
@@ -15,7 +19,7 @@ export const SuccessContainer = styled.div`
         opacity: 0.7;
         border-radius: 25px;
         flex-direction: column;
-        width: 50%;
+        width: 60%;
         gap: 1.5rem;
         h3 {
             color: #666;

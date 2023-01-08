@@ -1,21 +1,25 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
+import { toast } from "react-toastify"
 import { useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2';
-import { nombre } from '../App';
 import { formRender } from '../utils/CreateForm';
 import { saveMessage } from '../utils/SendForm';
 import { FormContainer } from './Form-Styles';
 
-
 export function Form({ items }) {
     const navigate = useNavigate();
     const [state, setState] = useState({});
+    const [loading, setLoading] = useState(false);
     const handleSubmit = e => {
+        setLoading(!loading);
+        setState({
+            ...state,
+            terms_and_conditions: false
+        });
         e.preventDefault();
         saveMessage(state)
             .then(r => {
-                Swal.fire(r)
-                .then(res => navigate(`/success?id=${r}`) )
+                toast.success('Exito!')
+                navigate(`/success?id=${r}`)
             })
     };
     const handleChange = e => {
@@ -44,7 +48,10 @@ export function Form({ items }) {
                     <h2>Completa el formulario</h2>
                 </div>
                 {
-                    items && formRender({items, state, handleChange})
+                    items && formRender({ items, state, handleChange })
+                }
+                {
+                    loading && <div className='box'><h5>Enviando su formulario...</h5></div>
                 }
             </form>
         </FormContainer>

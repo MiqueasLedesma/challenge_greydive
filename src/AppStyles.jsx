@@ -13,7 +13,7 @@ export const AppContainer = styled.div`
     @media (max-width:768px) {
         height: 1000px;
     }
-    @media (max-height:768px) {
+    @media screen and (max-height:700px) {
         height: 900px;
     }
 `;
